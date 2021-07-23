@@ -37,8 +37,7 @@ jobs:
       - run: pwd; ls
       - run: ant -version
       - run: java -version
-      - run: sudo apt-get install openjdk-8-jdk -y
-      
+      #- run: sudo apt-get install openjdk-8-jdk -y
       - run: ant -lib $PROVAR_HOME/ant -f demo/ANT/build.xml
       
       - store_test_results:
