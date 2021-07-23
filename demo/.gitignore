@@ -1,0 +1,7 @@
+ANT/Results*
+bin
+.metadata/
+.provarCaches/
+.pdf
+TestCycle/
+WSDL/
