@@ -18,9 +18,9 @@ jobs:
 
     environment:
       # Customize the JVM maximum heap limit
-      PROVAR_HOME: /home/circleci/project/ProvarHome
-      testproject.home: /home/circleci/project/demo
-      testproject.results: /home/circleci/project/demo/ANT/Results
+      PROVAR_HOME: /root/project/ProvarHome
+      testproject.home: /root/project/demo
+      testproject.results: /root/project/demo/ANT/Results
       #ProvarSecretsPassword: $ProvarSecretsPassword
     
     steps:
@@ -41,4 +41,4 @@ jobs:
       - run: ant -lib $PROVAR_HOME/ant -f demo/ANT/build.xml
       
       - store_test_results:
-          path: /home/circleci/project/demo/ANT/Results
+          path: /root/project/demo/ANT/Results
