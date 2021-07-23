@@ -1,8 +1,8 @@
 <project default="runtests">
 	<property environment="env"/>
-	<property name="provar.home" value="/root/project/ProvarHome"/>
-	<property name="testproject.home" value="/root/project/demo"/>
-	<property name="testproject.results" value="/root/project/demo/ANT/Results"/>
+	<property name="provar.home" value="${env.PROVAR_HOME}"/>
+	<property name="testproject.home" value="${env.testproject.home}"/>
+	<property name="testproject.results" value="${env.testproject.results}"/>
 	<property name="secrets.password" value="${env.ProvarSecretsPassword}"/>
 	<property name="testenvironment.secretspassword" value="${env.ProvarSecretsPassword_EnvName}"/>
 	
