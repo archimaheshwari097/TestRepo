@@ -1,0 +1,40 @@
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk-browsers
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+  #  working_directory: ~/repo
+
+    environment:
+      # Customize the JVM maximum heap limit
+      PROVAR_HOME: /home/circleci/project/ProvarHome
+      testproject.home: /home/circleci/project/PropelProject
+      testproject.results: /home/circleci/project/PropelProject/Results
+      ProvarSecretsPassword: $ProvarSecretsPassword
+    
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "PropelProject/build.xml" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      # run: echo $PROVAR_HOME $PROVAR_SF_DemoAdmin $PROVAR_SF_DemoAdmin_password        
+      - run: ant -lib $PROVAR_HOME/ant -f PropelProject/build.xml
+      
+      - store_test_results:
+          path: /home/circleci/project/PropelProject/Results
